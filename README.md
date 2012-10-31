@@ -2,7 +2,7 @@
 
 ## Description
 
-This cookbook installs [hydra-jetty][2]
+This cookbook installs [hydra-jetty][1]
 
 
 ## Requirements
