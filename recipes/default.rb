@@ -14,6 +14,12 @@ user node[:hydra_jetty][:user] do
   shell '/bin/false'
 end
 
+directory node[:hydra_jetty][:dir] do
+  owner node[:hydra_jetty][:user]
+  group node[:hydra_jetty][:group]
+  action :create
+end
+
 git node[:hydra_jetty][:dir] do
   repository node[:hydra_jetty][:git_repo]
   reference node[:hydra_jetty][:git_ref]
