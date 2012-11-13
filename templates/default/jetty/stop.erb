@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ps -U <%= "#{node[:hydra_jetty][:user]}" %> -opid,stat | grep '\b[0-9]' | cut -f2 -d' ' | xargs kill

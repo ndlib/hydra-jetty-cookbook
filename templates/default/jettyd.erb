@@ -1,0 +1,49 @@
+#!/bin/sh
+#
+# jettyd
+#
+# This shell script takes care of starting and stopping a Jetty webserver.
+#
+# chkconfig: - 64 36
+# description: Jetty webserver
+# processname: jettyd
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+start="/var/chef/jetty/bin/start"
+stop="/var/chef/jetty/bin/stop"
+
+start(){
+    stop
+    [ -x $start ] || exit 5
+    return 0
+}
+
+stop(){
+    [ -x $stop ] || exit 5
+    return 0
+}
+
+restart(){
+    stop
+    start
+}
+
+# See how we were called.
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  restart)
+    restart
+    ;;
+  *)
+    echo $"Usage: $0 {start|stop|restart}"
+    exit 2
+esac
+
+exit $?
