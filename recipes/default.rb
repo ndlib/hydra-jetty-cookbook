@@ -63,5 +63,5 @@ template '/etc/init.d/jetty' do
 end
 
 service 'jetty' do
-  action [ :enable, :start ]
+  action [ :enable, :restart ]
 end
