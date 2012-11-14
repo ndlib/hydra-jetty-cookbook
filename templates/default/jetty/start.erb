@@ -1,3 +1,0 @@
-#!/bin/sh
-
-/bin/su - jetty -c '<%= "#{node[:hydra_jetty][:java]} #{node[:hydra_jetty][:java_options].join(' ')} -jar #{File.join(node[:hydra_jetty][:dir], 'start.jar')} >> #{node[:hydra_jetty][:log]} 2>&1 &" %>'

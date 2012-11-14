@@ -42,26 +42,11 @@ end
 
 # Configure service
 
-directory '/var/chef/jetty/bin' do
-  action    :create
-  recursive true
-end
-
-template '/var/chef/jetty/bin/start' do
+template '/etc/init.d/jetty' do
   mode   '0751'
-  source 'jetty/start.erb'
+  source 'jetty.sh'
 end
 
-template '/var/chef/jetty/bin/stop' do
-  mode   '0751'
-  source 'jetty/stop.erb'
-end
-
-template '/etc/init.d/jettyd' do
-  mode   '0751'
-  source 'jettyd.erb'
-end
-
-service 'jettyd' do
+service 'jetty' do
   action [ :enable, :start ]
 end
