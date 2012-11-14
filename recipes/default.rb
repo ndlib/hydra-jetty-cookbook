@@ -34,6 +34,22 @@ git node[:hydra_jetty][:dir] do
   user       node[:hydra_jetty][:user]
 end
 
+
+# Enable logging
+
+directory File.join(node[:hydra_jetty][:dir], 'etc') do
+  action    :create
+  group     node[:hydra_jetty][:group]
+  owner     node[:hydra_jetty][:user]
+  recursive true
+end
+
+template File.join(node[:hydra_jetty][:dir], 'etc', 'jetty-logging.xml') do
+  mode   '0644'
+  source 'jetty_logging.xml.erb'
+end
+
+
 # Configure service
 
 template '/etc/default/jetty' do
