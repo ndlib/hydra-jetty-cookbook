@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Configuration for jetty
+
+JAVA='<%=       node[:hydra_jetty][:java]          %>'
+JETTY_HOME='<%= node[:hydra_jetty][:dir]           %>'
+JETTY_PORT='<%= node[:hydra_jetty][:port_number]   %>'
+JETTY_ARGS='<%= node[:hydra_jetty][:jetty_options] %>'
+JETTY_USER='<%= node[:hydra_jetty][:user]          %>'

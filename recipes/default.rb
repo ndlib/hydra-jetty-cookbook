@@ -34,13 +34,12 @@ git node[:hydra_jetty][:dir] do
   user       node[:hydra_jetty][:user]
 end
 
-file node[:hydra_jetty][:log] do
-  action :create_if_missing
-  group  node[:hydra_jetty][:group]
-  owner  node[:hydra_jetty][:user]
-end
-
 # Configure service
+
+template '/etc/default/jetty' do
+  mode   '0644'
+  source 'jetty_conf.erb'
+end
 
 template '/etc/init.d/jetty' do
   mode   '0751'
